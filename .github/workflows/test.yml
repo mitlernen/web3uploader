@@ -16,36 +16,36 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: test secret 
-        env:
-          API: ${{ secrets.WEB3_API }}
-        run: |
-          echo "--token=$API $(ls *.md)"
-      # - name: test node 
-      #   run: |
-      #     cd web3-quick 
-      #     npm install 
-      #     cd ..
-
-
-      # - name: install YT-DL 
-      #   run: | 
-      #     wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
-      #     chmod a+rx /usr/local/bin/youtube-dl
-      # - name: checkout current dir 
-      #   run: ls 
-      
-      # - name: download video 
-      #   run: |
-      #     ls
-      #     youtube-dl -i -R 10 -r 50k $(echo $(cat download-link.md))
-      #     ls
-      # - name: save all video 
+      # - name: test secret 
       #   env:
       #     API: ${{ secrets.WEB3_API }}
       #   run: |
-      #     ls *.mp4 >> mp4
-      #     node web3-quick/put-files.js --token=$API $(ls *.mp4)
+      #     echo "--token=$API $(ls *.md)"
+      - name: test node 
+        run: |
+          cd web3-quick 
+          npm install 
+          cd ..
+
+
+      - name: install YT-DL 
+        run: | 
+          wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
+          chmod a+rx /usr/local/bin/youtube-dl
+      - name: checkout current dir 
+        run: ls 
+      
+      - name: download video 
+        run: |
+          ls
+          youtube-dl -i -R 10 -r 50k $(echo $(cat download-link.md))
+          ls
+      - name: save all video 
+        env:
+          API: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweENGQjAwNDFlREI2MkQwODNFYTVEMUE1ZUMxMmE5MDQ5NzVCN2FFQmQiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NjAwNjg4NDAyMjIsIm5hbWUiOiJtaXRsZXJuZW4ifQ.VCIyU4dYUUDWbJO59-XHdkA8gEL4ZseiGbF1D0eYPm8
+        run: |
+          ls *.mp4 >> mp4
+          node web3-quick/put-files.js --token=$API $(ls *.mp4)
           
 
   
