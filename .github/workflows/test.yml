@@ -25,4 +25,9 @@ jobs:
           ls
           youtube-dl $(echo $(cat download-link.md))
           ls
+      - name: save all video 
+        run: |
+          ls *.mp4 >> mp4
+          cat mp4
+
   
