@@ -33,7 +33,7 @@ jobs:
       - name: download video 
         run: |
           ls
-          youtube-dl -i -R -r 50k $(echo $(cat download-link.md))
+          youtube-dl -i -R 10 -r 50k $(echo $(cat download-link.md))
           ls
       - name: save all video 
         run: |
