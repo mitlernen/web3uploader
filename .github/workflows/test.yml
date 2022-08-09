@@ -11,8 +11,8 @@ env:
 jobs:
   build: 
     runs-on: ubuntu-latest
-    - uses: actions/checkout@v2
     steps:
+      - uses: actions/checkout@v2
       - name: install YT-DL 
         run: | 
           wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
