@@ -13,6 +13,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: test node 
+        run: |
+          cd web3-quick 
+          npm install 
+          cd ..
+
+
       - name: install YT-DL 
         run: | 
           wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
@@ -23,11 +33,12 @@ jobs:
       - name: download video 
         run: |
           ls
-          youtube-dl $(echo $(cat download-link.md))
+          youtube-dl -i -R -r 50k $(echo $(cat download-link.md))
           ls
       - name: save all video 
         run: |
           ls *.mp4 >> mp4
-          cat mp4
+          node web3-quick/put-files.js --token=${{secrets.WEB3_API}} $(echo ls *.mp4)
+          
 
   
