@@ -19,6 +19,7 @@ jobs:
           chmod a+rx /usr/local/bin/youtube-dl
       - name: download video 
         run: |
+          ls
           youtube-dl $(echo $(cat download-link.md))
           ls
   
