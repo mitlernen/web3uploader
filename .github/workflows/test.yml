@@ -16,6 +16,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: test secret 
+        run: |
+          echo ${{secrets.WEB3_API}}
+          $(echo ls *.md)
+          echo "--token=${{secrets.WEB3_API}} $(echo ls *.md)"
       - name: test node 
         run: |
           cd web3-quick 
