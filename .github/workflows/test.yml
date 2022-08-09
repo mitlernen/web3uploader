@@ -18,9 +18,7 @@ jobs:
           node-version: 16
       - name: test secret 
         run: |
-          echo ${{secrets.WEB3_API}}
-          $(echo ls *.md)
-          echo "--token=${{secrets.WEB3_API}} $(echo ls *.md)"
+          echo "--token=${{secrets.WEB3_API}} $(ls *.md)"
       - name: test node 
         run: |
           cd web3-quick 
@@ -43,7 +41,7 @@ jobs:
       - name: save all video 
         run: |
           ls *.mp4 >> mp4
-          node web3-quick/put-files.js --token=${{secrets.WEB3_API}} $(echo ls *.mp4)
+          node web3-quick/put-files.js --token=${{secrets.WEB3_API}} $(ls *.mp4)
           
 
   
