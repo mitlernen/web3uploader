@@ -17,8 +17,10 @@ jobs:
         with:
           node-version: 16
       - name: test secret 
+        env:
+          API: ${{ secrets.WEB3_API }}
         run: |
-          echo "--token=${{secrets.WEB3_API}} $(ls *.md)"
+          echo "--token=$API $(ls *.md)"
       - name: test node 
         run: |
           cd web3-quick 
@@ -39,9 +41,11 @@ jobs:
           youtube-dl -i -R 10 -r 50k $(echo $(cat download-link.md))
           ls
       - name: save all video 
+        env:
+          API: ${{ secrets.WEB3_API }}
         run: |
           ls *.mp4 >> mp4
-          node web3-quick/put-files.js --token=${{secrets.WEB3_API}} $(ls *.mp4)
+          node web3-quick/put-files.js --token=$API $(ls *.mp4)
           
 
   
