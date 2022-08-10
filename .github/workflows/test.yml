@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: FedericoCarboni/setup-ffmpeg@v1
       - uses: actions/setup-node@v3
         with:
           node-version: 16
@@ -45,7 +46,7 @@ jobs:
       - name: download video 
         run: |
           ls
-          youtube-dl -i -R 10 -r 50k $(echo $(cat download-link.md))
+          youtube-dl -f bestvideo+bestaudio -i -R 10 -r 50k $(echo $(cat download-link.md))
           ls
       - name: replace all whitespaces
         run: rename 's/ /_/g' *.mp4
