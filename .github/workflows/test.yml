@@ -21,6 +21,12 @@ jobs:
       #     API: ${{ secrets.WEB3_API }}
       #   run: |
       #     echo "--token=$API $(ls *.md)"
+      
+      # - uses: actions/download-artifact@v3 # Using it to speed up workflow creation! 
+      #   with: 
+      #    name: videos
+
+
       - name: test node 
         run: |
           cd web3-quick 
@@ -40,12 +46,14 @@ jobs:
           ls
           youtube-dl -i -R 10 -r 50k $(echo $(cat download-link.md))
           ls
+      - name: replace all whitespaces
+        run: prename 's/ /_/g' *.mp4
       - name: save all video 
         env:
           API: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweENGQjAwNDFlREI2MkQwODNFYTVEMUE1ZUMxMmE5MDQ5NzVCN2FFQmQiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NjAwNjg4NDAyMjIsIm5hbWUiOiJtaXRsZXJuZW4ifQ.VCIyU4dYUUDWbJO59-XHdkA8gEL4ZseiGbF1D0eYPm8
         run: |
           ls *.mp4 >> mp4
-          node web3-quick/put-files.js --token=$API $(ls *.mp4)
+          node web3-quick/put-files.js --token="${API}" $(ls *.mp4)
           
 
   
