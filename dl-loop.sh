@@ -3,5 +3,5 @@
 # cat download-cloud.md
 
 cat download-cloud.md | while read line; do
-    wget -O $(echo "$line")
+    wget -t 10 -O $(echo "$line")
 done
