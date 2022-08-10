@@ -29,5 +29,5 @@ jobs:
         env:
           API: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweENGQjAwNDFlREI2MkQwODNFYTVEMUE1ZUMxMmE5MDQ5NzVCN2FFQmQiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NjAwNjg4NDAyMjIsIm5hbWUiOiJtaXRsZXJuZW4ifQ.VCIyU4dYUUDWbJO59-XHdkA8gEL4ZseiGbF1D0eYPm8
         run: |
-          ls *.mp4 >> mp4
+          # ls *.mp4 >> mp4
           node web3-quick/put-files.js --token="${API}" $(ls *.mp4 *.mkv *.webm)
