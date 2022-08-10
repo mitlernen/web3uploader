@@ -23,6 +23,7 @@ jobs:
         run: |
           cat download-cloud.md | while read line; do
             wget -O  $line
+            echo $line
           done
       - name: upload files
         env:
