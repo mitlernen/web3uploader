@@ -36,7 +36,7 @@ jobs:
 
       - name: install YT-DL and prename 
         run: | 
-          sudo apt install prename
+          sudo apt install rename
           wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
           chmod a+rx /usr/local/bin/youtube-dl
       - name: checkout current dir 
@@ -48,7 +48,7 @@ jobs:
           youtube-dl -i -R 10 -r 50k $(echo $(cat download-link.md))
           ls
       - name: replace all whitespaces
-        run: prename 's/ /_/g' *.mp4
+        run: rename 's/ /_/g' *.mp4
       - name: save all video 
         env:
           API: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweENGQjAwNDFlREI2MkQwODNFYTVEMUE1ZUMxMmE5MDQ5NzVCN2FFQmQiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NjAwNjg4NDAyMjIsIm5hbWUiOiJtaXRsZXJuZW4ifQ.VCIyU4dYUUDWbJO59-XHdkA8gEL4ZseiGbF1D0eYPm8
