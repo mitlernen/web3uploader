@@ -36,7 +36,7 @@ jobs:
 
       - name: install YT-DL and prename 
         run: | 
-          apt install prename
+          sudo apt install prename
           wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
           chmod a+rx /usr/local/bin/youtube-dl
       - name: checkout current dir 
