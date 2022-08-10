@@ -21,6 +21,7 @@ jobs:
           cd ..
       - name: dl cloud data
         run: |
+          chmod +x dl-loop.sh
           ./dl-loop.sh
       - name: upload files
         env:
